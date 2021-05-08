@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "712902726487",
+    "project_id": "koperasiku-e74cc",
+    "storage_bucket": "koperasiku-e74cc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:712902726487:android:022a12c9cf242420bde412",
+        "android_client_info": {
+          "package_name": "com.Koperasiku"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "712902726487-d3btbh0sans8c22nicjoiksoo60sm39e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkxOkG_qfsFAS_4OHynI1SvkZifHglvpc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "712902726487-d3btbh0sans8c22nicjoiksoo60sm39e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
