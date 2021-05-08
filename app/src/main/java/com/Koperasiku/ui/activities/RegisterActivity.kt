@@ -12,6 +12,11 @@ import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_register.*
+import kotlinx.android.synthetic.main.activity_register.et_email
+import kotlinx.android.synthetic.main.activity_register.et_first_name
+import kotlinx.android.synthetic.main.activity_register.et_last_name
+import kotlinx.android.synthetic.main.activity_register.et_mobile_number
+import kotlinx.android.synthetic.main.activity_user_profile.*
 
 @Suppress("DEPRECATION")
 class RegisterActivity : BaseActivity() {
@@ -104,6 +109,15 @@ class RegisterActivity : BaseActivity() {
                 )
                 false
             }
+
+            TextUtils.isEmpty(et_mobile_number.text.toString().trim { it <= ' ' }) -> {
+                showErrorSnackBar(
+                        resources.getString(R.string.err_msg_enter_mobile_number),
+                        true
+                )
+                false
+            }
+
             !cb_terms_and_condition.isChecked -> {
                 showErrorSnackBar(
                     resources.getString(R.string.err_msg_agree_terms_and_condition),
@@ -130,6 +144,7 @@ class RegisterActivity : BaseActivity() {
 
             val email: String = et_email.text.toString().trim { it <= ' ' }
             val password: String = et_password.text.toString().trim { it <= ' ' }
+            val mobileNumber = et_mobile_number.text.toString().trim { it <= ' ' }
 
             // Create an instance and create a register a user with email and password.
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
@@ -147,7 +162,10 @@ class RegisterActivity : BaseActivity() {
                                 firebaseUser.uid,
                                 et_first_name.text.toString().trim { it <= ' ' },
                                 et_last_name.text.toString().trim { it <= ' ' },
-                                et_email.text.toString().trim { it <= ' ' }
+                                et_email.text.toString().trim { it <= ' ' },
+                                    " ",
+                                    mobileNumber.toLong()
+
                             )
 
                             // Pass the required values in the constructor.
