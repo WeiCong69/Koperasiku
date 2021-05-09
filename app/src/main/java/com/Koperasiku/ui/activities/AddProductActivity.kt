@@ -9,6 +9,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
+import android.widget.AdapterView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -23,7 +24,7 @@ import java.io.IOException
 /**
  * Add Product screen of the app.
  */
-class AddProductActivity : BaseActivity(), View.OnClickListener {
+class AddProductActivity : BaseActivity(), View.OnClickListener{
 
     // A global variable for URI of a selected image from phone storage.
     private var mSelectedImageFileUri: Uri? = null
@@ -42,6 +43,18 @@ class AddProductActivity : BaseActivity(), View.OnClickListener {
 
         // Assign the click event to submit button.
         btn_submit.setOnClickListener(this)
+
+        sp_product_category.onItemSelectedListener= object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                Toast.makeText(this@AddProductActivity,
+                        "You selected ${adapterView?.getItemAtPosition(position).toString()}",
+                        Toast.LENGTH_LONG).show()            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+
+        }
     }
 
     override fun onClick(v: View?) {
@@ -52,10 +65,10 @@ class AddProductActivity : BaseActivity(), View.OnClickListener {
                 // The permission code is similar to the user profile image selection.
                 R.id.iv_add_update_product -> {
                     if (ContextCompat.checkSelfPermission(
-                            this,
-                            Manifest.permission.READ_EXTERNAL_STORAGE
-                        )
-                        == PackageManager.PERMISSION_GRANTED
+                                    this,
+                                    Manifest.permission.READ_EXTERNAL_STORAGE
+                            )
+                            == PackageManager.PERMISSION_GRANTED
                     ) {
                         Constants.showImageChooser(this@AddProductActivity)
                     } else {
@@ -63,9 +76,9 @@ class AddProductActivity : BaseActivity(), View.OnClickListener {
                          must be requested in your manifest, they should not be granted to your app,
                          and they should have protection level*/
                         ActivityCompat.requestPermissions(
-                            this,
-                            arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
-                            Constants.READ_STORAGE_PERMISSION_CODE
+                                this,
+                                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                                Constants.READ_STORAGE_PERMISSION_CODE
                         )
                     }
                 }
@@ -88,9 +101,9 @@ class AddProductActivity : BaseActivity(), View.OnClickListener {
      * @param grantResults
      */
     override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
+            requestCode: Int,
+            permissions: Array<out String>,
+            grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == Constants.READ_STORAGE_PERMISSION_CODE) {
@@ -100,9 +113,9 @@ class AddProductActivity : BaseActivity(), View.OnClickListener {
             } else {
                 //Displaying another toast if permission is not granted
                 Toast.makeText(
-                    this,
-                    resources.getString(R.string.read_storage_permission_denied),
-                    Toast.LENGTH_LONG
+                        this,
+                        resources.getString(R.string.read_storage_permission_denied),
+                        Toast.LENGTH_LONG
                 ).show()
             }
         }
@@ -117,10 +130,10 @@ class AddProductActivity : BaseActivity(), View.OnClickListener {
 
             // Replace the add icon with edit icon once the image is selected.
             iv_add_update_product.setImageDrawable(
-                ContextCompat.getDrawable(
-                    this@AddProductActivity,
-                    R.drawable.ic_vector_edit
-                )
+                    ContextCompat.getDrawable(
+                            this@AddProductActivity,
+                            R.drawable.ic_vector_edit
+                    )
             )
 
             // The uri of selection image from phone storage.
@@ -129,8 +142,8 @@ class AddProductActivity : BaseActivity(), View.OnClickListener {
             try {
                 // Load the product image in the ImageView.
                 GlideLoader(this@AddProductActivity).loadProductPicture(
-                    mSelectedImageFileUri!!,
-                    iv_product_image
+                        mSelectedImageFileUri!!,
+                        iv_product_image
                 )
             } catch (e: IOException) {
                 e.printStackTrace()
@@ -177,16 +190,16 @@ class AddProductActivity : BaseActivity(), View.OnClickListener {
 
             TextUtils.isEmpty(et_product_description.text.toString().trim { it <= ' ' }) -> {
                 showErrorSnackBar(
-                    resources.getString(R.string.err_msg_enter_product_description),
-                    true
+                        resources.getString(R.string.err_msg_enter_product_description),
+                        true
                 )
                 false
             }
 
             TextUtils.isEmpty(et_product_quantity.text.toString().trim { it <= ' ' }) -> {
                 showErrorSnackBar(
-                    resources.getString(R.string.err_msg_enter_product_quantity),
-                    true
+                        resources.getString(R.string.err_msg_enter_product_quantity),
+                        true
                 )
                 false
             }
@@ -204,9 +217,9 @@ class AddProductActivity : BaseActivity(), View.OnClickListener {
         showProgressDialog(resources.getString(R.string.please_wait))
 
         FirestoreClass().uploadImageToCloudStorage(
-            this@AddProductActivity,
-            mSelectedImageFileUri,
-            Constants.PRODUCT_IMAGE
+                this@AddProductActivity,
+                mSelectedImageFileUri,
+                Constants.PRODUCT_IMAGE
         )
     }
 
@@ -223,6 +236,8 @@ class AddProductActivity : BaseActivity(), View.OnClickListener {
 
     private fun uploadProductDetails() {
 
+        val category: String = sp_product_category.getSelectedItem().toString()
+
         // Get the logged in username from the SharedPreferences that we have stored at a time of login.
         val username =
             this.getSharedPreferences(Constants.MYSHOPPAL_PREFERENCES, Context.MODE_PRIVATE)
@@ -230,13 +245,15 @@ class AddProductActivity : BaseActivity(), View.OnClickListener {
 
         // Here we get the text from editText and trim the space
         val product = Product(
-            FirestoreClass().getCurrentUserID(),
-            username,
-            et_product_title.text.toString().trim { it <= ' ' },
-            et_product_price.text.toString().trim { it <= ' ' },
-            et_product_description.text.toString().trim { it <= ' ' },
-            et_product_quantity.text.toString().trim { it <= ' ' },
-            mProductImageURL
+                FirestoreClass().getCurrentUserID(),
+                username,
+                et_product_title.text.toString().trim { it <= ' ' },
+                et_product_price.text.toString().trim { it <= ' ' },
+                et_product_description.text.toString().trim { it <= ' ' },
+                et_product_quantity.text.toString().trim { it <= ' ' },
+                mProductImageURL,
+                "",
+                category
         )
 
         FirestoreClass().uploadProductDetails(this@AddProductActivity, product)
@@ -251,11 +268,14 @@ class AddProductActivity : BaseActivity(), View.OnClickListener {
         hideProgressDialog()
 
         Toast.makeText(
-            this@AddProductActivity,
-            resources.getString(R.string.product_uploaded_success_message),
-            Toast.LENGTH_SHORT
+                this@AddProductActivity,
+                resources.getString(R.string.product_uploaded_success_message),
+                Toast.LENGTH_SHORT
         ).show()
 
         finish()
     }
+
+
+
 }
