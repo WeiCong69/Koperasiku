@@ -3,6 +3,8 @@ package com.Koperasiku.ui.fragments
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
+import android.widget.SearchView
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.Koperasiku.R
 import com.Koperasiku.firestore.FirestoreClass
@@ -15,6 +17,9 @@ import com.Koperasiku.utils.Constants
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 
 class DashboardFragment : BaseFragment() {
+
+    lateinit var searchView: SearchView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,13 +40,44 @@ class DashboardFragment : BaseFragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.dashboard_menu, menu)
+
+        val search = menu!!.findItem(R.id.action_search)
+
+        if(search != null){
+            val searchView =search.actionView as SearchView
+            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String): Boolean {
+                    return false
+                }
+                override fun onQueryTextChange(newText: String): Boolean {
+                    Toast.makeText(requireActivity(),
+                            newText.toString(),
+                            Toast.LENGTH_LONG).show()
+                    //showProgressDialog(resources.getString(R.string.please_wait))
+
+                    FirestoreClass().searchProduct(this@DashboardFragment,newText.toLowerCase())
+                    return false
+                }
+            })
+        }
+
+
         super.onCreateOptionsMenu(menu, inflater)
+
+    }
+
+    private fun searchData(query: String) {
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
 
         when (id) {
+            R.id.action_search->{
+
+
+            }
 
             R.id.action_settings -> {
 
@@ -68,10 +104,12 @@ class DashboardFragment : BaseFragment() {
      */
     private fun getDashboardItemsList() {
         // Show the progress dialog.
-        showProgressDialog(resources.getString(R.string.please_wait))
+        //showProgressDialog(resources.getString(R.string.please_wait))
 
         FirestoreClass().getDashboardItemsList(this@DashboardFragment)
     }
+
+
 
     /**
      * A function to get the success result of the dashboard items from cloud firestore.
@@ -81,7 +119,7 @@ class DashboardFragment : BaseFragment() {
     fun successDashboardItemsList(dashboardItemsList: ArrayList<Product>) {
 
         // Hide the progress dialog.
-        hideProgressDialog()
+        //hideProgressDialog()
 
         if (dashboardItemsList.size > 0) {
 
