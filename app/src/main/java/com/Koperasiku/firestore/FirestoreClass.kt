@@ -26,7 +26,7 @@ class FirestoreClass {
 
     // Access a Cloud Firestore instance.
     private val mFireStore = FirebaseFirestore.getInstance()
-
+    //test
     /**
      * A function to make an entry of the registered user in the FireStore database.
      */
