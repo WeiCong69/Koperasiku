@@ -60,7 +60,7 @@ open class CartItemsListAdapter(
 
             holder.itemView.tv_cart_item_title.text = model.title
             holder.itemView.tv_cart_item_price.text = "$${model.price}"
-            holder.itemView.tv_cart_quantity.text = model.cart_quantity
+            holder.itemView.tv_original_price.text = model.cart_quantity
 
             if (model.cart_quantity == "0") {
                 holder.itemView.ib_remove_cart_item.visibility = View.GONE
@@ -72,10 +72,10 @@ open class CartItemsListAdapter(
                     holder.itemView.ib_delete_cart_item.visibility = View.GONE
                 }
 
-                holder.itemView.tv_cart_quantity.text =
+                holder.itemView.tv_original_price.text =
                     context.resources.getString(R.string.lbl_out_of_stock)
 
-                holder.itemView.tv_cart_quantity.setTextColor(
+                holder.itemView.tv_original_price.setTextColor(
                     ContextCompat.getColor(
                         context,
                         R.color.colorSnackBarError
@@ -94,7 +94,7 @@ open class CartItemsListAdapter(
                     holder.itemView.ib_delete_cart_item.visibility = View.GONE
                 }
 
-                holder.itemView.tv_cart_quantity.setTextColor(
+                holder.itemView.tv_original_price.setTextColor(
                     ContextCompat.getColor(
                         context,
                         R.color.colorSecondaryText

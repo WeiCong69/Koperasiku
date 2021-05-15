@@ -3,6 +3,7 @@
     package="com.Koperasiku">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -10,12 +11,17 @@
         android:label="Koperasiku"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
         <activity
-            android:name="com.Koperasiku.ui.activities.DashboardActivity"
+            android:name=".ui.activities.HomeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ui.activities.DashboardActivity"
             android:label="@string/app_name" />
         <activity
-            android:name="com.Koperasiku.ui.activities.SplashActivity"
+            android:name=".ui.activities.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -25,59 +31,59 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.Koperasiku.ui.activities.MainActivity"
+            android:name=".ui.activities.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.Koperasiku.ui.activities.LoginActivity"
+            android:name=".ui.activities.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.Koperasiku.ui.activities.RegisterActivity"
+            android:name=".ui.activities.RegisterActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.Koperasiku.ui.activities.ForgotPasswordActivity"
+            android:name=".ui.activities.ForgotPasswordActivity"
             android:label=""
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.Koperasiku.ui.activities.UserProfileActivity"
+            android:name=".ui.activities.UserProfileActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.Koperasiku.ui.activities.SettingsActivity"
+            android:name=".ui.activities.SettingsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.Koperasiku.ui.activities.AddProductActivity"
+            android:name=".ui.activities.AddProductActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.Koperasiku.ui.activities.ProductDetailsActivity"
+            android:name=".ui.activities.ProductDetailsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.Koperasiku.ui.activities.CartListActivity"
+            android:name=".ui.activities.CartListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.Koperasiku.ui.activities.AddressListActivity"
+            android:name=".ui.activities.AddressListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.Koperasiku.ui.activities.AddEditAddressActivity"
+            android:name=".ui.activities.AddEditAddressActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.Koperasiku.ui.activities.CheckoutActivity"
+            android:name=".ui.activities.CheckoutActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.Koperasiku.ui.activities.MyOrderDetailsActivity"
+            android:name=".ui.activities.MyOrderDetailsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.Koperasiku.ui.activities.SoldProductDetailsActivity"
+            android:name=".ui.activities.SoldProductDetailsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>

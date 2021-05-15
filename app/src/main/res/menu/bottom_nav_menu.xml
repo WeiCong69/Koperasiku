@@ -21,4 +21,9 @@
         android:id="@+id/navigation_sold_products"
         android:icon="@drawable/ic_vector_sold_products"
         android:title="@string/title_sold_products" />
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_vector_user"
+        android:title="Profile" />
 </menu>

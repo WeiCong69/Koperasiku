@@ -6,8 +6,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.Koperasiku.R
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 /**
  *  Dashboard Screen of the app.
@@ -37,7 +37,8 @@ class DashboardActivity : BaseActivity() {
                 R.id.navigation_products,
                 R.id.navigation_dashboard,
                 R.id.navigation_orders,
-                R.id.navigation_sold_products
+                R.id.navigation_sold_products,
+                R.id.navigation_home
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

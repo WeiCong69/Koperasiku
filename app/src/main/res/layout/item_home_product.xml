@@ -12,14 +12,14 @@
     android:paddingBottom="@dimen/cart_item_paddingTopBottom">
 
     <LinearLayout
-        android:id="@+id/ll_cart_item_image"
+        android:id="@+id/ll_home_item_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/item_dashboard_background"
         android:padding="@dimen/cart_item_image_padding">
 
         <ImageView
-            android:id="@+id/iv_cart_item_image"
+            android:id="@+id/iv_home_item_image"
             android:layout_width="@dimen/cart_item_image_width"
             android:layout_height="@dimen/cart_item_image_height"
             android:background="@color/colorImageViewBackground"
@@ -28,7 +28,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/ll_cart_item_details"
+        android:id="@+id/ll_home_item_details"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
@@ -38,88 +38,66 @@
         android:orientation="vertical">
 
         <com.Koperasiku.utils.MSPTextView
-            android:id="@+id/tv_cart_item_title"
+            android:id="@+id/tv_home_item_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/item_value_text_color"
-            android:textSize="@dimen/cart_item_title_textSize"
+            android:textSize="18sp"
+            android:textStyle="bold"
             tools:text="Cart Item Title" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.Koperasiku.utils.MSPTextViewBold
-                android:id="@+id/tv_cart_item_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:textColor="@color/item_value_text_color"
-                android:textSize="@dimen/cart_item_price_textSize"
-                android:textStyle="bold"
-                tools:text="$100" />
-
             <LinearLayout
                 android:id="@+id/ll_update_cart_quantity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
                 android:layout_marginStart="@dimen/update_cart_quantity_marginStart"
-                android:layout_marginEnd="@dimen/update_cart_quantity_marginEnd"
-                android:layout_toEndOf="@id/tv_cart_item_price"
+                android:layout_marginEnd="16dp"
                 android:gravity="end"
                 android:orientation="horizontal">
 
-                <ImageButton
-                    android:id="@+id/ib_remove_cart_item"
+                <com.Koperasiku.utils.MSPTextViewBold
+                    android:id="@+id/tv_home_item_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/ib_remove_cart_item_marginStartEnd"
-                    android:layout_marginEnd="@dimen/ib_remove_cart_item_marginStartEnd"
-                    android:background="@android:color/transparent"
-                    android:contentDescription="@string/content_description"
-                    android:foreground="?attr/selectableItemBackgroundBorderless"
-                    android:padding="@dimen/ib_cart_item_padding"
-                    android:src="@drawable/ic_vector_remove" />
+                    android:textColor="@color/colorSnackBarError"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:text="$100" />
 
                 <com.Koperasiku.utils.MSPTextView
                     android:id="@+id/tv_original_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/item_grey_border_background"
                     android:paddingStart="@dimen/cart_quantity_paddingStartEnd"
                     android:paddingTop="@dimen/cart_quantity_paddingTopBottom"
-                    android:paddingEnd="@dimen/cart_quantity_paddingStartEnd"
+                    android:paddingEnd="10dp"
                     android:paddingBottom="@dimen/cart_quantity_paddingTopBottom"
                     android:textColor="@color/colorSecondaryText"
-                    android:textSize="@dimen/cart_quantity_textSize"
+                    android:textSize="12sp"
                     android:textStyle="bold"
-                    tools:text="1" />
+                    tools:text="$120" />
 
-                <ImageButton
-                    android:id="@+id/ib_add_cart_item"
-                    android:layout_width="wrap_content"
+                <com.Koperasiku.utils.MSPTextView
+                    android:id="@+id/tv_discount"
+                    android:layout_width="62dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/ib_add_cart_item_marginStart"
-                    android:layout_marginEnd="@dimen/ib_add_cart_item_marginEnd"
-                    android:background="@android:color/transparent"
-                    android:contentDescription="@string/content_description"
-                    android:foreground="?attr/selectableItemBackgroundBorderless"
-                    android:padding="@dimen/ib_cart_item_padding"
-                    android:src="@drawable/ic_vector_add" />
+                    android:layout_weight="1"
+                    android:paddingStart="@dimen/cart_quantity_paddingStartEnd"
+                    android:paddingTop="@dimen/cart_quantity_paddingTopBottom"
+                    android:paddingEnd="5dp"
+                    android:paddingBottom="@dimen/cart_quantity_paddingTopBottom"
+                    android:textColor="@color/colorSecondaryText"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    tools:text="-17% off" />
+
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/ib_delete_cart_item"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/content_description"
-        android:foreground="?attr/selectableItemBackgroundBorderless"
-        android:padding="@dimen/ib_cart_item_padding"
-        android:src="@drawable/ic_vector_delete"
-        android:visibility="visible"
-        tools:visibility="visible" />
 </LinearLayout>

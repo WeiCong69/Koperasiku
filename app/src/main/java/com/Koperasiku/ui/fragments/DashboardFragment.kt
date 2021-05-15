@@ -66,9 +66,6 @@ class DashboardFragment : BaseFragment() {
 
     }
 
-    private fun searchData(query: String) {
-
-    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
