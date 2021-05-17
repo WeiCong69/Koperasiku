@@ -2,7 +2,6 @@ package com.Koperasiku.ui.adapters
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -65,7 +64,7 @@ open class HomeItemsListAdapter(
             //val priceAfterDiscount = String.format("%.3f",model.price.toDouble() * model.discount.toDouble()).toDouble()
             val priceAfterDiscount = round(model.price.toDouble() * model.discount.toDouble())
             val discount =  Math.ceil(100*(1-model.discount.toDouble()))
-            Log.e("Price",priceAfterDiscount.toString())
+            //Log.e("Price",priceAfterDiscount.toString())
             holder.itemView.tv_original_price.text = "$rm ${model.price}"
             holder.itemView.tv_home_item_price.text = "$rm $priceAfterDiscount"
             holder.itemView.tv_discount.text ="- ${discount} %"

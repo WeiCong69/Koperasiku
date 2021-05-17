@@ -29,4 +29,7 @@
 
     <color name="colorOrderStatusInProcess">#FF9800</color>
     <color name="colorOrderStatusDelivered">#8BC34A</color>
+    <color name="solidCircle">#AAFFFFFF</color>
+    <color name="circleBorder">#50FFFFFF</color>
+
 </resources>
