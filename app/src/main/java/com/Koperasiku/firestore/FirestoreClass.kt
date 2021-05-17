@@ -8,10 +8,7 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import com.Koperasiku.models.*
 import com.Koperasiku.ui.activities.*
-import com.Koperasiku.ui.fragments.DashboardFragment
-import com.Koperasiku.ui.fragments.OrdersFragment
-import com.Koperasiku.ui.fragments.ProductsFragment
-import com.Koperasiku.ui.fragments.SoldProductsFragment
+import com.Koperasiku.ui.fragments.*
 import com.Koperasiku.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -131,7 +128,58 @@ class FirestoreClass {
             }
     }
 
+    fun getUserDetailsInFragment(fragment: Fragment) {
 
+        // Here we pass the collection name from which we wants the data.
+        mFireStore.collection(Constants.USERS)
+                // The document id to get the Fields of user.
+                .document(getCurrentUserID())
+                .get()
+                .addOnSuccessListener { document ->
+
+                    Log.i(fragment.javaClass.simpleName, document.toString())
+
+                    // Here we have received the document snapshot which is converted into the User Data model object.
+                    val user = document.toObject(User::class.java)!!
+
+                    val sharedPreferences =
+                            fragment.activity?.getSharedPreferences(
+                                    Constants.MYSHOPPAL_PREFERENCES,
+                                    Context.MODE_PRIVATE
+                            )
+
+                    // Create an instance of the editor which is help us to edit the SharedPreference.
+                    val editor: SharedPreferences.Editor = sharedPreferences!!.edit()
+                    editor.putString(
+                            Constants.LOGGED_IN_USERNAME,
+                            "${user.firstName} ${user.lastName}"
+                    )
+                    editor.apply()
+
+                    when (fragment) {
+
+                        is UserProfileFragment -> {
+                            // Call a function of base activity for transferring the result to it.
+                            fragment.userDetailsSuccess(user)
+                        }
+                    }
+                }
+                .addOnFailureListener { e ->
+                    // Hide the progress dialog if there is any error. And print the error in log.
+                    when (fragment) {
+                        is UserProfileFragment -> {
+                            //fragment.hideProgressDialog()
+
+                        }
+                    }
+
+                    Log.e(
+                            fragment.javaClass.simpleName,
+                            "Error while getting user details.",
+                            e
+                    )
+                }
+    }
     /**
      * A function to update the user profile data into the database.
      *
@@ -294,7 +342,7 @@ class FirestoreClass {
                 }
     }
 
-    fun getHomeItemsUnderPromotion(activity : HomeActivity){
+    fun getHomeItemsUnderPromotion(fragment : HomeFragment){
 
         // The collection name for PRODUCTS
         mFireStore.collection(Constants.PRODUCTS)
@@ -324,12 +372,12 @@ class FirestoreClass {
                     }
 
                     // Pass the success result to the base fragment.
-                    activity.successHomeItemsList(productsList)
+                    fragment.successHomeItemsList(productsList)
                 }
                 .addOnFailureListener { e ->
                     // Hide the progress dialog if there is any error which getting the dashboard items list.
-                    activity.hideProgressDialog()
-                    Log.e(activity.javaClass.simpleName, "Error while getting dashboard items list.", e)
+                    fragment.hideProgressDialog()
+                    Log.e(fragment.javaClass.simpleName, "Error while getting dashboard items list.", e)
                 }
     }
 

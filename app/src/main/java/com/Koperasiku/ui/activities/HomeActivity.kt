@@ -1,23 +1,15 @@
 package com.Koperasiku.ui.activities
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.Koperasiku.R
 import com.Koperasiku.decoration.BannerSlider
 import com.Koperasiku.decoration.SliderIndicator
-import com.Koperasiku.firestore.FirestoreClass
-import com.Koperasiku.models.Product
-import com.Koperasiku.ui.adapters.HomeItemsListAdapter
 import com.Koperasiku.ui.adapters.HomeSliderAdapter
 import com.Koperasiku.ui.fragments.FragmentSlider
-import com.Koperasiku.utils.Constants
-import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.layout_banner.*
-import kotlinx.android.synthetic.main.layout_banner.sliderView
 import java.util.*
 
 class HomeActivity : BaseActivity() {
@@ -44,7 +36,7 @@ class HomeActivity : BaseActivity() {
     override fun onResume() {
         super.onResume()
         Log.e("No discount","sugoi")
-        getHomeList()
+        //getHomeList()
     }
 
     private fun setupSlider() {
@@ -68,32 +60,32 @@ class HomeActivity : BaseActivity() {
         doubleBackToExit()
     }
 
-    private fun getHomeList(){
-        showProgressDialog("Loading the best deals for you")
-        FirestoreClass().getHomeItemsUnderPromotion(this@HomeActivity)
-    }
+//    private fun getHomeList(){
+//        showProgressDialog("Loading the best deals for you")
+//        FirestoreClass().getHomeItemsUnderPromotion(this@HomeActivity)
+//    }
 
-    fun successHomeItemsList(homeItemsList: ArrayList<Product>) {
-        hideProgressDialog()
-        if(homeItemsList.size>0){
-            rv_home_items.layoutManager = LinearLayoutManager(this@HomeActivity)
-            rv_home_items.setHasFixedSize(true)
-
-            val adapter = HomeItemsListAdapter(this, homeItemsList)
-            rv_home_items.adapter=adapter
-
-            adapter.setOnClickListener(object:
-                HomeItemsListAdapter.OnClickListener{
-                override fun onClick(position: Int, product: Product) {
-                    val intent = Intent(this@HomeActivity, ProductDetailsActivity::class.java)
-                    intent.putExtra(Constants.EXTRA_PRODUCT_ID, product.product_id)
-                    intent.putExtra(Constants.EXTRA_PRODUCT_OWNER_ID, product.user_id)
-                    startActivity(intent)
-                }
-                }
-            )
-        }else{
-            Log.e("No discount","jialat")
-        }
-    }
+//    fun successHomeItemsList(homeItemsList: ArrayList<Product>) {
+//        hideProgressDialog()
+//        if(homeItemsList.size>0){
+//            rv_home_items.layoutManager = LinearLayoutManager(this@HomeActivity)
+//            rv_home_items.setHasFixedSize(true)
+//
+//            val adapter = HomeItemsListAdapter(this, homeItemsList)
+//            rv_home_items.adapter=adapter
+//
+//            adapter.setOnClickListener(object:
+//                HomeItemsListAdapter.OnClickListener{
+//                override fun onClick(position: Int, product: Product) {
+//                    val intent = Intent(this@HomeActivity, ProductDetailsActivity::class.java)
+//                    intent.putExtra(Constants.EXTRA_PRODUCT_ID, product.product_id)
+//                    intent.putExtra(Constants.EXTRA_PRODUCT_OWNER_ID, product.user_id)
+//                    startActivity(intent)
+//                }
+//                }
+//            )
+//        }else{
+//            Log.e("No discount","jialat")
+//        }
+//    }
 }
