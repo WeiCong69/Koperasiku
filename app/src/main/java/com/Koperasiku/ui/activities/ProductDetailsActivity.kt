@@ -13,6 +13,7 @@ import com.Koperasiku.utils.Constants
 import com.Koperasiku.utils.GlideLoader
 import kotlinx.android.synthetic.main.activity_product_details.*
 import kotlinx.android.synthetic.main.item_cart_layout.view.*
+import kotlin.math.round
 
 /**
  * Product Details Screen.
@@ -79,12 +80,13 @@ class ProductDetailsActivity : BaseActivity(), View.OnClickListener {
      * A function to prepare the cart item to add it to the cart in cloud firestore.
      */
     private fun addToCart() {
+        val priceAfterDiscount = round(mProductDetails.price.toDouble() * mProductDetails.discount.toDouble())
 
         val addToCart = Cart(
             FirestoreClass().getCurrentUserID(),
             mProductId,
             mProductDetails.title,
-            mProductDetails.price,
+            priceAfterDiscount.toString(),
             mProductDetails.image,
             Constants.DEFAULT_CART_QUANTITY
         )
@@ -137,12 +139,12 @@ class ProductDetailsActivity : BaseActivity(), View.OnClickListener {
             product.image,
             iv_product_detail_image
         )
-
+        val priceAfterDiscount = round(product.price.toDouble() * product.discount.toDouble())
         tv_product_details_title.text = product.title
-        tv_product_details_price.text = "$${product.price}"
+        tv_product_details_price.text = "RM $priceAfterDiscount"
         tv_product_details_description.text = product.description
         tv_product_details_stock_quantity.text = product.stock_quantity
-
+        tv_product_category_description.text = product.category
 
         if(product.stock_quantity.toInt() == 0){
 

@@ -27,7 +27,7 @@
                 android:id="@+id/iv_user_photo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/colorAccent"
+                android:background="@color/colorOffWhite"
                 android:contentDescription="@string/content_description"
                 android:scaleType="fitXY" />
 
@@ -46,7 +46,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimary"
+                    android:background="@color/colorAccent"
                     android:gravity="center"
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp">
@@ -58,11 +58,12 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/tv_count_items_in_cart"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
                             android:text="453K"
-                            android:textColor="@color/colorWhite"
+                            android:textColor="@color/colorPrimaryText"
                             android:textSize="25sp" />
 
                         <TextView
@@ -71,7 +72,7 @@
                             android:fontFamily="sans-serif-light"
                             android:text="In Cart"
                             android:textAllCaps="true"
-                            android:textColor="@color/colorWhite"
+                            android:textColor="@color/colorPrimaryText"
                             android:textSize="13sp" />
 
                     </LinearLayout>
@@ -84,7 +85,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimary"
+                    android:background="@color/colorSnackBarError"
                     android:gravity="center"
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp">
@@ -96,11 +97,12 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/tv_count_completed_orders"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
                             android:text="873"
-                            android:textColor="@color/colorWhite"
+                            android:textColor="@color/colorPrimaryText"
                             android:textSize="25sp" />
 
                         <TextView
@@ -109,7 +111,7 @@
                             android:fontFamily="sans-serif-light"
                             android:text="Completed Order"
                             android:textAllCaps="true"
-                            android:textColor="@color/colorWhite"
+                            android:textColor="@color/colorPrimaryText"
                             android:textSize="13sp" />
 
                     </LinearLayout>
@@ -169,7 +171,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/fl_user_image"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/settings_name_marginTop"
+            android:layout_marginTop="50dp"
             android:textColor="@color/colorDarkGrey"
             android:textSize="@dimen/settings_name_textSize"
             tools:text="Denis Panjuta" />
@@ -180,7 +182,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_name"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/settings_info_marginTop"
+            android:layout_marginTop="10dp"
             android:textColor="@color/colorSecondaryText"
             android:textSize="@dimen/settings_info_textSize"
             tools:text="Male" />
@@ -243,10 +245,10 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_gravity="center"
-            android:layout_marginStart="77dp"
-            android:layout_marginTop="143dp"
-            android:layout_marginEnd="67dp"
-            android:layout_marginBottom="@dimen/settings_button_marginTopBottom"
+            android:layout_marginStart="72dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="72dp"
+            android:layout_marginBottom="250dp"
             android:background="@drawable/button_background"
             android:foreground="?attr/selectableItemBackground"
             android:gravity="center"

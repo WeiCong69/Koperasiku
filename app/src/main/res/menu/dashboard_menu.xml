@@ -15,10 +15,6 @@
         android:title="@string/action_settings"
         app:showAsAction="always" />
 
-    <item
-        android:id="@+id/action_settings"
-        android:icon="@drawable/ic_vector_settings"
-        android:title="@string/action_settings"
-        app:showAsAction="always" />
+
 
 </menu>

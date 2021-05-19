@@ -1001,6 +1001,94 @@ class FirestoreClass {
     }
 
     /**
+     * A function to get the list of orders from cloud firestore.
+     */
+    fun getMyOrdersListActivity(activity: CompletedOrderActivity) {
+        mFireStore.collection(Constants.ORDERS)
+            .whereEqualTo(Constants.USER_ID, getCurrentUserID())
+            .get() // Will get the documents snapshots.
+            .addOnSuccessListener { document ->
+                Log.e(activity.javaClass.simpleName, document.documents.toString())
+                val list: ArrayList<Order> = ArrayList()
+
+                for (i in document.documents) {
+
+                    val orderItem = i.toObject(Order::class.java)!!
+                    orderItem.id = i.id
+
+                    list.add(orderItem)
+                }
+
+                activity.populateOrdersListInUI(list)
+            }
+            .addOnFailureListener { e ->
+                // Here call a function of base activity for transferring the result to it.
+
+                activity.hideProgressDialog()
+
+                Log.e(activity.javaClass.simpleName, "Error while getting the orders list.", e)
+            }
+    }
+
+    fun getOrdersCount(fragment: UserProfileFragment) {
+        mFireStore.collection(Constants.ORDERS)
+            .whereEqualTo(Constants.USER_ID, getCurrentUserID())
+            .get() // Will get the documents snapshots.
+            .addOnSuccessListener { document ->
+//                Log.e(fragment.javaClass.simpleName, document.documents.toString())
+//                val list: ArrayList<Order> = ArrayList()
+                var count=0
+                for (i in document.documents) {
+                    count++
+//                    val orderItem = i.toObject(Order::class.java)!!
+//                    orderItem.id = i.id
+//
+//                    list.add(orderItem)
+                }
+
+                fragment.getOrderCount(count)
+            }
+            .addOnFailureListener { e ->
+                // Here call a function of base activity for transferring the result to it.
+
+                //fragment.hideProgressDialog()
+
+                Log.e(fragment.javaClass.simpleName, "Error while getting the orders list.", e)
+            }
+    }
+
+    fun getCartItemCount(fragment: UserProfileFragment) {
+        // The collection name for PRODUCTS
+        mFireStore.collection(Constants.CART_ITEMS)
+            .whereEqualTo(Constants.USER_ID, getCurrentUserID())
+            .get() // Will get the documents snapshots.
+            .addOnSuccessListener { document ->
+
+                // Here we get the list of cart items in the form of documents.
+                Log.e(fragment.javaClass.simpleName, document.documents.toString())
+
+                // Here we have created a new instance for Cart Items ArrayList.
+                //val list: ArrayList<Cart> = ArrayList()
+                var count=0
+
+                // A for loop as per the list of documents to convert them into Cart Items ArrayList.
+                for (i in document.documents) {
+                    count++
+//                    val cartItem = i.toObject(Cart::class.java)!!
+//                    cartItem.id = i.id
+//
+//                    list.add(cartItem)
+                }
+
+                fragment.getCartItemCount(count)
+            }
+            .addOnFailureListener { e ->
+                // Hide the progress dialog if there is an error based on the activity instance.
+                Log.e(fragment.javaClass.simpleName, "Error while getting the cart list items.", e)
+            }
+    }
+
+    /**
      * A function to get the list of sold products from the cloud firestore.
      *
      *  @param fragment Base class

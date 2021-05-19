@@ -50,14 +50,70 @@
             android:textStyle="bold"
             tools:text="Item Name" />
 
-        <com.Koperasiku.utils.MSPTextView
-            android:id="@+id/tv_dashboard_item_price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dashboard_item_price_marginTop"
-            android:textColor="@color/colorAccent"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            tools:text="$100.00" />
+<!--                <com.Koperasiku.utils.MSPTextView-->
+<!--                    android:id="@+id/tv_dashboard_item_price"-->
+<!--                    android:layout_width="78dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="@dimen/dashboard_item_price_marginTop"-->
+<!--                    android:textColor="@color/colorSnackBarError"-->
+<!--                    android:textSize="14sp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    tools:text="$100.00" />-->
     </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:layout_below="@id/ll_dashboard_item_details"
+                android:id="@+id/ll_update_cart_quantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="@dimen/update_cart_quantity_marginStart"
+                android:layout_marginEnd="5dp"
+                android:gravity="start"
+                android:orientation="horizontal">
+
+                <com.Koperasiku.utils.MSPTextViewBold
+                    android:id="@+id/tv_dashboard_item_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/colorSnackBarError"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:text="$100" />
+
+                <com.Koperasiku.utils.MSPTextView
+                    android:id="@+id/tv_original_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/cart_quantity_paddingStartEnd"
+                    android:paddingTop="@dimen/cart_quantity_paddingTopBottom"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="@dimen/cart_quantity_paddingTopBottom"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/colorSecondaryText"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    tools:text="$120" />
+
+<!--                <com.Koperasiku.utils.MSPTextView-->
+<!--                    android:id="@+id/tv_discount"-->
+<!--                    android:layout_width="62dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:paddingStart="@dimen/cart_quantity_paddingStartEnd"-->
+<!--                    android:paddingTop="@dimen/cart_quantity_paddingTopBottom"-->
+<!--                    android:paddingEnd="5dp"-->
+<!--                    android:paddingBottom="@dimen/cart_quantity_paddingTopBottom"-->
+<!--                    android:textAlignment="textEnd"-->
+<!--                    android:textColor="@color/colorSecondaryText"-->
+<!--                    android:textSize="12sp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    tools:text="-17% off" />-->
+
+            </LinearLayout>
+
 </RelativeLayout>

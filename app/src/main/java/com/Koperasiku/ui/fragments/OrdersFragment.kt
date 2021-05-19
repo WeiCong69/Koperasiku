@@ -9,6 +9,7 @@ import com.Koperasiku.R
 import com.Koperasiku.firestore.FirestoreClass
 import com.Koperasiku.models.Order
 import com.Koperasiku.ui.adapters.MyOrdersListAdapter
+import kotlinx.android.synthetic.main.activity_product_details.*
 import kotlinx.android.synthetic.main.fragment_orders.*
 
 /**
@@ -24,6 +25,8 @@ class OrdersFragment : BaseFragment() {
         val root = inflater.inflate(R.layout.fragment_orders, container, false)
         return root
     }
+
+
 
     override fun onResume() {
         super.onResume()

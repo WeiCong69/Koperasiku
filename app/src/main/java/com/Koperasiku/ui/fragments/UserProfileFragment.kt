@@ -9,10 +9,7 @@ import androidx.fragment.app.Fragment
 import com.Koperasiku.R
 import com.Koperasiku.firestore.FirestoreClass
 import com.Koperasiku.models.User
-import com.Koperasiku.ui.activities.AddressListActivity
-import com.Koperasiku.ui.activities.CartListActivity
-import com.Koperasiku.ui.activities.LoginActivity
-import com.Koperasiku.ui.activities.UserProfileActivity
+import com.Koperasiku.ui.activities.*
 import com.Koperasiku.utils.Constants
 import com.Koperasiku.utils.GlideLoader
 import com.google.firebase.auth.FirebaseAuth
@@ -45,6 +42,8 @@ class UserProfileFragment : Fragment() , View.OnClickListener{
         rl_cart.setOnClickListener(this@UserProfileFragment)
         rl_order.setOnClickListener(this@UserProfileFragment)
         getUserDetails()
+        getDashboardCount()
+
     }
 
      override fun onClick(v: View?) {
@@ -79,6 +78,8 @@ class UserProfileFragment : Fragment() , View.OnClickListener{
                     transaction?.replace(R.id.cl_test, OrdersFragment())
                     transaction?.disallowAddToBackStack()
                     transaction?.commit()
+                    //startActivity(Intent(context, CompletedOrderActivity::class.java))
+
                 }
             }
         }
@@ -107,6 +108,19 @@ class UserProfileFragment : Fragment() , View.OnClickListener{
         tv_gender.text = user.gender
         tv_email.text = user.email
         tv_mobile_number.text = "${user.mobile}"
+    }
+
+    private fun getDashboardCount(){
+        FirestoreClass().getOrdersCount(this)
+        FirestoreClass().getCartItemCount(this)
+    }
+
+    fun getOrderCount(count: Int){
+        tv_count_completed_orders.text=count.toString()
+    }
+
+    fun getCartItemCount(count: Int ){
+        tv_count_items_in_cart.text=count.toString()
     }
 
 }

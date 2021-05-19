@@ -11,7 +11,6 @@ import com.Koperasiku.firestore.FirestoreClass
 import com.Koperasiku.models.Product
 import com.Koperasiku.ui.activities.CartListActivity
 import com.Koperasiku.ui.activities.ProductDetailsActivity
-import com.Koperasiku.ui.activities.SettingsActivity
 import com.Koperasiku.ui.adapters.DashboardItemsListAdapter
 import com.Koperasiku.utils.Constants
 import kotlinx.android.synthetic.main.fragment_dashboard.*
@@ -76,11 +75,6 @@ class DashboardFragment : BaseFragment() {
 
             }
 
-            R.id.action_settings -> {
-
-                startActivity(Intent(activity, SettingsActivity::class.java))
-                return true
-            }
 
             R.id.action_cart -> {
                 startActivity(Intent(activity, CartListActivity::class.java))
