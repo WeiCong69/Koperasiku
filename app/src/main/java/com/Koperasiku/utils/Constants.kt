@@ -24,6 +24,12 @@ object Constants {
     const val MYSHOPPAL_PREFERENCES: String = "MyShopPalPrefs"
     const val LOGGED_IN_USERNAME: String = "logged_in_username"
 
+    const val CATEGORY: String = "Category"
+    const val CATEGORY_FOOD: String = "Food & Beverages"
+    const val CATEGORY_CLOTHINGS: String = "Clothings"
+    const val CATEGORY_STATIONARY: String = "Stationary"
+
+
     // Intent extra constants.
     const val EXTRA_USER_DETAILS: String = "extra_user_details"
     const val EXTRA_PRODUCT_ID: String = "extra_product_id"

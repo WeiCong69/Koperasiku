@@ -31,5 +31,7 @@
     <color name="colorOrderStatusDelivered">#8BC34A</color>
     <color name="solidCircle">#AAFFFFFF</color>
     <color name="circleBorder">#50FFFFFF</color>
+    <color name="green_fresh">#62eb34</color>
+
 
 </resources>

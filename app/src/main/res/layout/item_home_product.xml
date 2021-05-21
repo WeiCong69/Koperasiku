@@ -70,7 +70,7 @@
                     tools:text="$100" />
 
                 <com.Koperasiku.utils.MSPTextView
-                    android:id="@+id/tv_original_price"
+                    android:id="@+id/tv_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="@dimen/cart_quantity_paddingStartEnd"

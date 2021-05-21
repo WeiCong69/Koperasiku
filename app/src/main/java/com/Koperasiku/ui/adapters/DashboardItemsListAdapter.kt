@@ -66,7 +66,7 @@ open class DashboardItemsListAdapter(
             holder.itemView.tv_dashboard_item_title.text = model.title
             Log.e("amad",priceAfterDiscount.toString())
             holder.itemView.tv_dashboard_item_price.text = "RM $priceAfterDiscount"
-            holder.itemView.tv_original_price.text = "was RM ${model.price}"
+            holder.itemView.tv_date.text = "was RM ${model.price}"
             //holder.itemView.tv_discount.text="-$discount %"
 
             holder.itemView.setOnClickListener {

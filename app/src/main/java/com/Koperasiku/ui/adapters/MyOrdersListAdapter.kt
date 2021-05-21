@@ -11,7 +11,11 @@ import com.Koperasiku.models.Order
 import com.Koperasiku.ui.activities.MyOrderDetailsActivity
 import com.Koperasiku.utils.Constants
 import com.Koperasiku.utils.GlideLoader
-import kotlinx.android.synthetic.main.item_list_layout.view.*
+import kotlinx.android.synthetic.main.item_cart_layout.view.tv_date
+import kotlinx.android.synthetic.main.item_order_layout.view.*
+import java.text.SimpleDateFormat
+import java.util.*
+import java.util.concurrent.TimeUnit
 
 open class MyOrdersListAdapter(
     private val context: Context,
@@ -28,7 +32,7 @@ open class MyOrdersListAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return MyViewHolder(
             LayoutInflater.from(context).inflate(
-                R.layout.item_list_layout,
+                R.layout.item_order_layout,
                 parent,
                 false
             )
@@ -52,13 +56,41 @@ open class MyOrdersListAdapter(
 
             GlideLoader(context).loadProductPicture(
                 model.image,
-                holder.itemView.iv_item_image
+                holder.itemView.iv_order_item_image
             )
 
-            holder.itemView.tv_item_name.text = model.title
-            holder.itemView.tv_item_price.text = "RM ${model.total_amount}"
+            holder.itemView.tv_order_title.text = model.title
+            holder.itemView.tv_order_item_price.text = "Total  : RM ${model.total_amount}"
 
-            holder.itemView.ib_delete_product.visibility = View.GONE
+            // Date Format in which the date will be displayed in the UI.
+            val dateFormat = "dd MMM yyyy HH:mm"
+            // Create a DateFormatter object for displaying date in specified format.
+            val formatter = SimpleDateFormat(dateFormat, Locale.getDefault())
+
+            // Create a calendar object that will convert the date and time value in milliseconds to date.
+            val calendar: Calendar = Calendar.getInstance()
+            calendar.timeInMillis = model.order_datetime
+
+            val orderDateTime = formatter.format(calendar.time)
+            holder.itemView.tv_date.text = "Date   : $orderDateTime"
+
+            val diffInMilliSeconds: Long = System.currentTimeMillis() - model.order_datetime
+            val diffInHours: Long = TimeUnit.MILLISECONDS.toHours(diffInMilliSeconds)
+            //Log.e("Difference in Hours", "$diffInHours")
+
+            when {
+                diffInHours < 1 -> {
+                    holder.itemView.tv_status.text = "Status: Pending"
+                }
+                diffInHours < 2 -> {
+                    holder.itemView.tv_status.text = "Status: In Progress"
+                }
+                else -> {
+                    holder.itemView.tv_status.text = "Status: Delivered"
+                }
+            }
+
+            //holder.itemView.ib_delete_product.visibility = View.GONE
 
             holder.itemView.setOnClickListener {
                 val intent = Intent(context, MyOrderDetailsActivity::class.java)

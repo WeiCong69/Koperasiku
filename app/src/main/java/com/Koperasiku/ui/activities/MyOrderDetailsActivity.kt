@@ -1,7 +1,6 @@
 package com.Koperasiku.ui.activities
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -85,7 +84,7 @@ class MyOrderDetailsActivity : AppCompatActivity() {
 
         val diffInMilliSeconds: Long = System.currentTimeMillis() - orderDetails.order_datetime
         val diffInHours: Long = TimeUnit.MILLISECONDS.toHours(diffInMilliSeconds)
-        Log.e("Difference in Hours", "$diffInHours")
+        //Log.e("Difference in Hours", "$diffInHours")
 
         when {
             diffInHours < 1 -> {

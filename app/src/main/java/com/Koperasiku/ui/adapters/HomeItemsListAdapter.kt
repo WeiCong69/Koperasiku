@@ -65,7 +65,7 @@ open class HomeItemsListAdapter(
             val priceAfterDiscount = round(model.price.toDouble() * model.discount.toDouble())
             val discount =  Math.ceil(100*(1-model.discount.toDouble()))
             //Log.e("Price",priceAfterDiscount.toString())
-            holder.itemView.tv_original_price.text = "$rm ${model.price}"
+            holder.itemView.tv_date.text = "$rm ${model.price}"
             holder.itemView.tv_home_item_price.text = "$rm $priceAfterDiscount"
             holder.itemView.tv_discount.text ="- ${discount} %"
 

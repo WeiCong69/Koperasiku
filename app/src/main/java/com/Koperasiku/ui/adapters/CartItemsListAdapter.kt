@@ -59,12 +59,12 @@ open class CartItemsListAdapter(
             GlideLoader(context).loadProductPicture(model.image, holder.itemView.iv_cart_item_image)
 
             holder.itemView.tv_cart_item_title.text = model.title
-            holder.itemView.tv_cart_item_price.text = "$${model.price}"
-            holder.itemView.tv_original_price.text = model.cart_quantity
+            holder.itemView.tv_cart_item_price.text = "RM ${model.price}"
+            holder.itemView.tv_date.text = model.cart_quantity
 
             if (model.cart_quantity == "0") {
                 holder.itemView.ib_remove_cart_item.visibility = View.GONE
-                holder.itemView.ib_add_cart_item.visibility = View.GONE
+                holder.itemView.tv_status.visibility = View.GONE
 
                 if (updateCartItems) {
                     holder.itemView.ib_delete_cart_item.visibility = View.VISIBLE
@@ -72,10 +72,10 @@ open class CartItemsListAdapter(
                     holder.itemView.ib_delete_cart_item.visibility = View.GONE
                 }
 
-                holder.itemView.tv_original_price.text =
+                holder.itemView.tv_date.text =
                     context.resources.getString(R.string.lbl_out_of_stock)
 
-                holder.itemView.tv_original_price.setTextColor(
+                holder.itemView.tv_date.setTextColor(
                     ContextCompat.getColor(
                         context,
                         R.color.colorSnackBarError
@@ -85,16 +85,16 @@ open class CartItemsListAdapter(
 
                 if (updateCartItems) {
                     holder.itemView.ib_remove_cart_item.visibility = View.VISIBLE
-                    holder.itemView.ib_add_cart_item.visibility = View.VISIBLE
+                    holder.itemView.tv_status.visibility = View.VISIBLE
                     holder.itemView.ib_delete_cart_item.visibility = View.VISIBLE
                 } else {
 
                     holder.itemView.ib_remove_cart_item.visibility = View.GONE
-                    holder.itemView.ib_add_cart_item.visibility = View.GONE
+                    holder.itemView.tv_status.visibility = View.GONE
                     holder.itemView.ib_delete_cart_item.visibility = View.GONE
                 }
 
-                holder.itemView.tv_original_price.setTextColor(
+                holder.itemView.tv_date.setTextColor(
                     ContextCompat.getColor(
                         context,
                         R.color.colorSecondaryText
@@ -124,7 +124,7 @@ open class CartItemsListAdapter(
                 }
             }
 
-            holder.itemView.ib_add_cart_item.setOnClickListener {
+            holder.itemView.tv_status.setOnClickListener {
 
                 val cartQuantity: Int = model.cart_quantity.toInt()
 

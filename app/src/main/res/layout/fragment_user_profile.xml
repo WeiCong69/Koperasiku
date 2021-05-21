@@ -15,6 +15,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
     <RelativeLayout
+        android:layout_marginBottom="250dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -85,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/colorSnackBarError"
+                    android:background="@color/green_fresh"
                     android:gravity="center"
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp">
@@ -147,73 +148,204 @@
                 />
         </RelativeLayout>
 
-
-        <com.Koperasiku.utils.MSPTextView
-            android:id="@+id/tv_edit"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/ll_user_details"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/fl_header_bg"
-            android:layout_alignParentEnd="true"
-            android:layout_margin="16dp"
-            android:background="@drawable/item_grey_border_background"
-            android:foreground="?attr/selectableItemBackgroundBorderless"
-            android:paddingStart="@dimen/settings_edit_label_marginStartEnd"
-            android:paddingTop="@dimen/settings_edit_label_marginTopBottom"
-            android:paddingEnd="@dimen/settings_edit_label_marginStartEnd"
-            android:paddingBottom="@dimen/settings_edit_label_marginTopBottom"
-            android:text="@string/lbl_edit"
-            android:textColor="@color/colorSecondaryText"
-            android:textSize="@dimen/settings_edit_label_textSize" />
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
+            android:orientation="vertical">
 
-        <com.Koperasiku.utils.MSPTextViewBold
-            android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/fl_user_image"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"
-            android:textColor="@color/colorDarkGrey"
-            android:textSize="@dimen/settings_name_textSize"
-            tools:text="Denis Panjuta" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-        <com.Koperasiku.utils.MSPTextView
-            android:id="@+id/tv_gender"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_name"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/colorSecondaryText"
-            android:textSize="@dimen/settings_info_textSize"
-            tools:text="Male" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="13sp" />
 
-        <com.Koperasiku.utils.MSPTextView
-            android:id="@+id/tv_email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_gender"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/settings_info_marginTop"
-            android:textColor="@color/colorSecondaryText"
-            android:textSize="@dimen/settings_info_textSize"
-            tools:text="denis.panjuta@gmail.com" />
+                <TextView
+                    android:id="@+id/tv_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="joey@sharenofood.com"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
 
-        <com.Koperasiku.utils.MSPTextView
-            android:id="@+id/tv_mobile_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_email"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/settings_info_marginTop"
-            android:textColor="@color/colorSecondaryText"
-            android:textSize="@dimen/settings_info_textSize"
-            tools:text="123456789" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/colorLightGrey" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="+1-202-555-0157"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/colorLightGrey" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mobile Number"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_mobile_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Test"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/colorLightGrey" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gender"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="facebook.com/joeytrib"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/colorLightGrey" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+<!--        <com.Koperasiku.utils.MSPTextView-->
+<!--            android:id="@+id/tv_edit"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/fl_header_bg"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_margin="16dp"-->
+<!--            android:background="@drawable/item_grey_border_background"-->
+<!--            android:foreground="?attr/selectableItemBackgroundBorderless"-->
+<!--            android:paddingStart="@dimen/settings_edit_label_marginStartEnd"-->
+<!--            android:paddingTop="@dimen/settings_edit_label_marginTopBottom"-->
+<!--            android:paddingEnd="@dimen/settings_edit_label_marginStartEnd"-->
+<!--            android:paddingBottom="@dimen/settings_edit_label_marginTopBottom"-->
+<!--            android:text="@string/lbl_edit"-->
+<!--            android:textColor="@color/colorSecondaryText"-->
+<!--            android:textSize="@dimen/settings_edit_label_textSize" />-->
+
+<!--        <com.Koperasiku.utils.MSPTextViewBold-->
+<!--            android:id="@+id/tv_name"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/fl_user_image"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:layout_marginTop="50dp"-->
+<!--            android:textColor="@color/colorDarkGrey"-->
+<!--            android:textSize="@dimen/settings_name_textSize"-->
+<!--            tools:text="Denis Panjuta" />-->
+
+<!--        <com.Koperasiku.utils.MSPTextView-->
+<!--            android:id="@+id/tv_gender"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/tv_name"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:textColor="@color/colorSecondaryText"-->
+<!--            android:textSize="@dimen/settings_info_textSize"-->
+<!--            tools:text="Male" />-->
+
+<!--        <com.Koperasiku.utils.MSPTextView-->
+<!--            android:id="@+id/tv_email"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/tv_gender"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:layout_marginTop="@dimen/settings_info_marginTop"-->
+<!--            android:textColor="@color/colorSecondaryText"-->
+<!--            android:textSize="@dimen/settings_info_textSize"-->
+<!--            tools:text="denis.panjuta@gmail.com" />-->
+
+<!--        <com.Koperasiku.utils.MSPTextView-->
+<!--            android:id="@+id/tv_mobile_number"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/tv_email"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:layout_marginTop="@dimen/settings_info_marginTop"-->
+<!--            android:textColor="@color/colorSecondaryText"-->
+<!--            android:textSize="@dimen/settings_info_textSize"-->
+<!--            tools:text="123456789" />-->
 
         <LinearLayout
             android:id="@+id/ll_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_mobile_number"
+            android:layout_below="@id/ll_user_details"
             android:layout_margin="@dimen/settings_address_margin"
             android:background="@drawable/item_grey_border_background"
             android:foreground="?attr/selectableItemBackground"
@@ -237,26 +369,50 @@
 
         </LinearLayout>
 
-        <com.Koperasiku.utils.MSPButton
-            android:id="@+id/btn_logout"
-            android:layout_width="267dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/ll_address"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_gravity="center"
-            android:layout_marginStart="72dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="72dp"
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/ll_address"
+            android:layout_marginStart="@dimen/settings_address_margin"
+            android:layout_marginTop="@dimen/settings_address_margin"
+            android:layout_marginEnd="@dimen/settings_address_margin"
             android:layout_marginBottom="250dp"
-            android:background="@drawable/button_background"
-            android:foreground="?attr/selectableItemBackground"
-            android:gravity="center"
-            android:paddingTop="@dimen/btn_padding"
-            android:paddingBottom="@dimen/btn_padding"
-            android:text="@string/btn_lbl_logout"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/btn_textSize" />
+            android:orientation="horizontal">
+
+            <com.Koperasiku.utils.MSPButton
+                android:id="@+id/btn_logout"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_address"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="@drawable/button_background"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:paddingTop="@dimen/btn_padding"
+                android:paddingBottom="@dimen/btn_padding"
+                android:text="@string/btn_lbl_logout"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/btn_textSize" />
+
+            <com.Koperasiku.utils.MSPButton
+                android:id="@+id/btn_edit"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_address"
+                android:layout_margin="10dp"
+                android:layout_toEndOf="@+id/btn_logout"
+                android:background="@drawable/button_background"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:paddingTop="@dimen/btn_padding"
+                android:paddingBottom="@dimen/btn_padding"
+                android:text="Edit"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/btn_textSize" />
+        </LinearLayout>
+
 
     </RelativeLayout>
 

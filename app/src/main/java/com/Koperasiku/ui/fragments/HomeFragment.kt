@@ -14,7 +14,7 @@ import com.Koperasiku.decoration.BannerSlider
 import com.Koperasiku.decoration.SliderIndicator
 import com.Koperasiku.firestore.FirestoreClass
 import com.Koperasiku.models.Product
-import com.Koperasiku.ui.activities.AddressListActivity
+import com.Koperasiku.ui.activities.FilterProductActivity
 import com.Koperasiku.ui.activities.ProductDetailsActivity
 import com.Koperasiku.ui.adapters.HomeItemsListAdapter
 import com.Koperasiku.ui.adapters.HomeSliderAdapter
@@ -47,7 +47,7 @@ class HomeFragment : BaseFragment() , View.OnClickListener{
 
     override fun onResume() {
         super.onResume()
-        ll_promotions.setOnClickListener(this@HomeFragment)
+        //ll_promotions.setOnClickListener(this@HomeFragment)
         ll_stationary.setOnClickListener(this@HomeFragment)
         ll_food.setOnClickListener(this@HomeFragment)
         ll_clothings.setOnClickListener(this@HomeFragment)
@@ -62,8 +62,8 @@ class HomeFragment : BaseFragment() , View.OnClickListener{
         //link image
         fragments.add(FragmentSlider.newInstance("https://ecs7.tokopedia.net/img/banner/2020/4/19/85531617/85531617_17b56894-2608-4509-a4f4-ad86aa5d3b62.jpg"))
         fragments.add(FragmentSlider.newInstance("https://ecs7.tokopedia.net/img/banner/2020/4/19/85531617/85531617_7da28e4c-a14f-4c10-8fec-845578f7d748.jpg"))
-        fragments.add(FragmentSlider.newInstance("https://ecs7.tokopedia.net/img/banner/2020/4/18/85531617/85531617_87a351f9-b040-4d90-99f4-3f3e846cd7ef.jpg"))
-        fragments.add(FragmentSlider.newInstance("https://ecs7.tokopedia.net/img/banner/2020/4/20/85531617/85531617_03e76141-3faf-45b3-8bcd-fc0962836db3.jpg"))
+//        fragments.add(FragmentSlider.newInstance("https://ecs7.tokopedia.net/img/banner/2020/4/18/85531617/85531617_87a351f9-b040-4d90-99f4-3f3e846cd7ef.jpg"))
+//        fragments.add(FragmentSlider.newInstance("https://ecs7.tokopedia.net/img/banner/2020/4/20/85531617/85531617_03e76141-3faf-45b3-8bcd-fc0962836db3.jpg"))
         mAdapter = HomeSliderAdapter(childFragmentManager, fragments)
         sliderView69!!.adapter = mAdapter
         mIndicator =
@@ -111,29 +111,24 @@ class HomeFragment : BaseFragment() , View.OnClickListener{
     override fun onClick(v: View?) {
         if (v != null) {
             when(v.id){
-                R.id.ll_promotions -> {
-                    val transaction = activity?.supportFragmentManager?.beginTransaction()
-                    transaction?.replace(R.id.cl_home, DashboardFragment())
-                    transaction?.disallowAddToBackStack()
-                    transaction?.commit()
+                R.id.ll_food -> {
+                    val intent = Intent(context, FilterProductActivity::class.java)
+                    intent.putExtra(Constants.CATEGORY, Constants.CATEGORY_FOOD)
+                    startActivity(intent)
                 }
                 R.id.ll_clothings -> {
+                    val intent = Intent(context, FilterProductActivity::class.java)
+                    intent.putExtra(Constants.CATEGORY, Constants.CATEGORY_CLOTHINGS)
+                    startActivity(intent)
                     Log.e("junji", "hellow")
-//                    val intent = Intent(
-//                        requireActivity().baseContext,
-//                        DashboardFragment::class.java
-//                    )
-//                    intent.putExtra("message", "id.message")
-//                    requireActivity().startActivity(intent)
+
                 }
                 R.id.ll_stationary -> {
-                    val intent = Intent(context, AddressListActivity::class.java)
+                    val intent = Intent(context, FilterProductActivity::class.java)
+                    intent.putExtra(Constants.CATEGORY, Constants.CATEGORY_STATIONARY)
                     startActivity(intent)
                 }
             }
-        }else{
-            Log.e("pokai", "hellow")
-
         }
     }
 

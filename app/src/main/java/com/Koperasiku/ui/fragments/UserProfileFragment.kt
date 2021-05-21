@@ -36,7 +36,7 @@ class UserProfileFragment : Fragment() , View.OnClickListener{
 
     override fun onResume() {
         super.onResume()
-        tv_edit.setOnClickListener(this@UserProfileFragment)
+        btn_edit.setOnClickListener(this@UserProfileFragment)
         btn_logout.setOnClickListener(this@UserProfileFragment)
         ll_address.setOnClickListener(this@UserProfileFragment)
         rl_cart.setOnClickListener(this@UserProfileFragment)
@@ -50,7 +50,7 @@ class UserProfileFragment : Fragment() , View.OnClickListener{
         if (v != null) {
             when (v.id) {
 
-                R.id.tv_edit -> {
+                R.id.btn_edit -> {
                     val intent = Intent(context, UserProfileActivity::class.java)
                     intent.putExtra(Constants.EXTRA_USER_DETAILS, mUserDetails)
                     startActivity(intent)
@@ -74,11 +74,11 @@ class UserProfileFragment : Fragment() , View.OnClickListener{
                     startActivity(Intent(context, CartListActivity::class.java))
                 }
                 R.id.rl_order->{
-                    val transaction = activity?.supportFragmentManager?.beginTransaction()
-                    transaction?.replace(R.id.cl_test, OrdersFragment())
-                    transaction?.disallowAddToBackStack()
-                    transaction?.commit()
-                    //startActivity(Intent(context, CompletedOrderActivity::class.java))
+//                    val transaction = activity?.supportFragmentManager?.beginTransaction()
+//                    transaction?.replace(R.id.cl_test, OrdersFragment())
+//                    transaction?.disallowAddToBackStack()
+//                    transaction?.commit()
+                    startActivity(Intent(context, CompletedOrderActivity::class.java))
 
                 }
             }

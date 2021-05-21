@@ -19,7 +19,7 @@
         android:padding="@dimen/cart_item_image_padding">
 
         <ImageView
-            android:id="@+id/iv_cart_item_image"
+            android:id="@+id/iv_order_item_image"
             android:layout_width="@dimen/cart_item_image_width"
             android:layout_height="@dimen/cart_item_image_height"
             android:background="@color/colorImageViewBackground"
@@ -38,10 +38,11 @@
         android:orientation="vertical">
 
         <com.Koperasiku.utils.MSPTextView
-            android:id="@+id/tv_cart_item_title"
+            android:id="@+id/tv_order_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/item_value_text_color"
+            android:padding="10dp"
+            android:textColor="@color/colorPrimaryText"
             android:textSize="@dimen/cart_item_title_textSize"
             tools:text="Cart Item Title" />
 
@@ -49,78 +50,53 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.Koperasiku.utils.MSPTextViewBold
-                android:id="@+id/tv_cart_item_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:textColor="@color/item_value_text_color"
-                android:textSize="@dimen/cart_item_price_textSize"
-                android:textStyle="bold"
-                tools:text="$100" />
-
             <LinearLayout
                 android:id="@+id/ll_update_cart_quantity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/update_cart_quantity_marginStart"
                 android:layout_marginEnd="@dimen/update_cart_quantity_marginEnd"
-                android:layout_toEndOf="@id/tv_cart_item_price"
-                android:gravity="end"
-                android:orientation="horizontal">
+                android:gravity="start"
+                android:orientation="vertical">
 
-                <ImageButton
-                    android:id="@+id/ib_remove_cart_item"
+
+                <com.Koperasiku.utils.MSPTextViewBold
+                    android:id="@+id/tv_order_item_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/ib_remove_cart_item_marginStartEnd"
-                    android:layout_marginEnd="@dimen/ib_remove_cart_item_marginStartEnd"
-                    android:background="@android:color/transparent"
-                    android:contentDescription="@string/content_description"
-                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:textColor="@color/colorSecondaryText"
+                    android:textSize="@dimen/cart_quantity_textSize"
+                    android:layout_marginStart="@dimen/ib_add_cart_item_marginStart"
+                    android:layout_marginEnd="@dimen/ib_add_cart_item_marginEnd"
                     android:padding="@dimen/ib_cart_item_padding"
-                    android:src="@drawable/ic_vector_remove" />
+                    tools:text="Total Price: RM100" />
 
                 <com.Koperasiku.utils.MSPTextView
                     android:id="@+id/tv_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/item_grey_border_background"
-                    android:paddingStart="@dimen/cart_quantity_paddingStartEnd"
-                    android:paddingTop="@dimen/cart_quantity_paddingTopBottom"
-                    android:paddingEnd="@dimen/cart_quantity_paddingStartEnd"
-                    android:paddingBottom="@dimen/cart_quantity_paddingTopBottom"
+                    android:layout_marginStart="@dimen/ib_add_cart_item_marginStart"
+                    android:layout_marginEnd="@dimen/ib_add_cart_item_marginEnd"
+                    android:padding="@dimen/ib_cart_item_padding"
                     android:textColor="@color/colorSecondaryText"
                     android:textSize="@dimen/cart_quantity_textSize"
-                    android:textStyle="bold"
-                    tools:text="1" />
+                    tools:text="Date : 19 May 2021" />
 
-                <ImageButton
+                <com.Koperasiku.utils.MSPTextView
                     android:id="@+id/tv_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/ib_add_cart_item_marginStart"
                     android:layout_marginEnd="@dimen/ib_add_cart_item_marginEnd"
-                    android:background="@android:color/transparent"
-                    android:contentDescription="@string/content_description"
-                    android:foreground="?attr/selectableItemBackgroundBorderless"
-                    android:padding="@dimen/ib_cart_item_padding"
-                    android:src="@drawable/ic_vector_add" />
+                    android:textColor="@color/colorSecondaryText"
+                    tools:text="Status: Pending"
+                    android:textSize="@dimen/cart_quantity_textSize"
+                    android:padding="@dimen/ib_cart_item_padding" />
             </LinearLayout>
+
         </RelativeLayout>
+
+
     </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/ib_delete_cart_item"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/content_description"
-        android:foreground="?attr/selectableItemBackgroundBorderless"
-        android:padding="@dimen/ib_cart_item_padding"
-        android:src="@drawable/ic_cross"
-        android:rotation="45"
-        android:visibility="visible"
-        tools:visibility="visible" />
 </LinearLayout>
