@@ -31,7 +31,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="16dp"
             android:text="Lihat Semua Promo"
-            android:textColor="#00C853"
+            android:textColor="@color/colorAccent"
             android:textSize="12sp" />
 
     </RelativeLayout>

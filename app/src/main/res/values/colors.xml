@@ -32,6 +32,6 @@
     <color name="solidCircle">#AAFFFFFF</color>
     <color name="circleBorder">#50FFFFFF</color>
     <color name="green_fresh">#62eb34</color>
-
+    <color name="background_grey">#f2f0f0</color>
 
 </resources>

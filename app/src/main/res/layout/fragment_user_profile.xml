@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_grey"
     tools:context=".ui.fragments.HomeFragment">
     <ScrollView
         android:layout_width="match_parent"
@@ -135,11 +136,11 @@
                 android:id="@+id/iv_user_photo1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="9dp"
                 android:adjustViewBounds="true"
                 android:visibility="invisible"
-                android:padding="3dp"
-                android:scaleType="centerInside"
+                android:padding="5dp"
+                android:background="@drawable/profile_pic_circle"
+                android:scaleType="matrix"
                 android:src="@drawable/ic_user_placeholder" />
 
             <View
